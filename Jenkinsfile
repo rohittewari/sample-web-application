@@ -17,8 +17,8 @@ pipeline{
 
 
               stage('Quality Gate Status Check'){
-                def dockerHome = tool 'docker'
-                env.PATH = "${dockerHome}/bin:${env.PATH}"
+               // def dockerHome = tool 'docker'
+               // env.PATH = "${dockerHome}/bin:${env.PATH}"
                agent {
 			    
                 docker {				

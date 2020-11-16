@@ -4,7 +4,9 @@ currentBuild.displayName = "Final_Demo # "+currentBuild.number
         def tag = sh script: 'git rev-parse HEAD', returnStdout: true
         return tag
         }
-        
+ 
+def dockerHome = tool 'docker'
+env.PATH = "${dockerHome}/bin:${env.PATH}"
 
 pipeline{
         agent any  
@@ -18,8 +20,7 @@ pipeline{
               stage('Quality Gate Status Check'){
 
                agent {
-			    def dockerHome = tool 'docker'
-                env.PATH = "${dockerHome}/bin:${env.PATH}"
+			    
                 docker {				
                 image 'maven'
                 args '-v $HOME/.m2:/root/.m2'

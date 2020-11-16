@@ -9,7 +9,7 @@ currentBuild.displayName = "Final_Demo # "+currentBuild.number
 
 pipeline{
 	 // Assign to docker slave(s) label, could also be 'any'
-        any agent //{
+        agent any  //{
          //label 'docker' 
        // } 
 	

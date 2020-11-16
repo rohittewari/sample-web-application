@@ -9,9 +9,9 @@ currentBuild.displayName = "Final_Demo # "+currentBuild.number
 
 pipeline{
 	 // Assign to docker slave(s) label, could also be 'any'
-        agent {
-         label 'docker' 
-        } 
+        any agent //{
+         //label 'docker' 
+       // } 
 	
         environment{
 	    Docker_tag = getDockerTag()
@@ -24,7 +24,7 @@ pipeline{
                agent {			    
                 docker {
 		// Set both label and image
-                label 'docker'	
+               // label 'docker'	
                 image 'maven'
                 args '-v $HOME/.m2:/root/.m2'
                 }

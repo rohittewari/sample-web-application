@@ -18,7 +18,9 @@ pipeline{
               stage('Quality Gate Status Check'){
 
                agent {
-                docker {
+			    def dockerHome = tool 'docker'
+                env.PATH = "${dockerHome}/bin:${env.PATH}"
+                docker {				
                 image 'maven'
                 args '-v $HOME/.m2:/root/.m2'
                 }

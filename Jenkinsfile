@@ -8,20 +8,23 @@ currentBuild.displayName = "Final_Demo # "+currentBuild.number
 
 
 pipeline{
-        agent any  
+	 // Assign to docker slave(s) label, could also be 'any'
+        agent {
+         label 'docker' 
+        } 
+	
         environment{
 	    Docker_tag = getDockerTag()
         }
         
         stages{
-
-
               stage('Quality Gate Status Check'){
                // def dockerHome = tool 'docker'
                // env.PATH = "${dockerHome}/bin:${env.PATH}"
-               agent {
-			    
-                docker {				
+               agent {			    
+                docker {
+		// Set both label and image
+                label 'docker'	
                 image 'maven'
                 args '-v $HOME/.m2:/root/.m2'
                 }

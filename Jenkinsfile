@@ -48,7 +48,13 @@ pipeline{
                    sh 'docker build . -t rohittew/devops-training:1.0'
 		 //  withCredentials([string(credentialsId: 'docker_password', variable: 'docker_password')]) {
                  withCredentials([usernamePassword(credentialsId: 'docker_password1', passwordVariable: 'docker-password-var', usernameVariable: 'docker-username')]) {				    
-				  sh 'docker login -u $docker-username -p $docker-password-var'
+				  //sh 'docker login -u $docker-username -p $docker-password-var'
+			          echo '$passwordVariable'
+			          echo '$docker-password-var'
+			          echo '$usernameVariable'
+			          echo '$docker-username'
+			          
+			          sh 'docker login -u rohittew -p Generic12@'
 				  sh 'docker push rohittew/devops-training:1.0'
 			}
                        }

@@ -39,6 +39,25 @@ pipeline{
 
 
 		
+              stage('build and push docker image')
+                {
+              steps{
+                  script{
+		   sh 'pwd'	  
+		   sh 'cp -r ../MyPipeline@2/target .'
+                   sh 'docker build . -t rohittew/devops-training:1.0'
+		   withCredentials([string(credentialsId: 'docker_password', variable: 'docker_password')]) {
+				    
+				  sh 'docker login -u rohittew -p $docker_password'
+				  sh 'docker push rohittew/devops-training:1.0'
+			}
+                       }
+                    }
+                 }
+		
+		
+		
+		
                }
 	       
 	       

@@ -47,7 +47,7 @@ pipeline{
 		   sh 'cp -r ../MyPipeline@2/target .'
                    sh 'docker build . -t rohittew/devops-training:1.0'
 		 //  withCredentials([string(credentialsId: 'docker_password', variable: 'docker_password')]) {
-                 withCredentials([usernamePassword(credentialsId: 'docker_password', passwordVariable: 'docker-password-var', usernameVariable: 'docker-username')]) {				    
+                 withCredentials([usernamePassword(credentialsId: 'docker_password1', passwordVariable: 'docker-password-var', usernameVariable: 'docker-username')]) {				    
 				  sh 'docker login -u $docker-username -p $docker-password-var'
 				  sh 'docker push rohittew/devops-training:1.0'
 			}
